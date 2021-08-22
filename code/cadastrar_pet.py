@@ -2,12 +2,15 @@ import utilidades #arquivo que importa utilidades e ferramentas gerais que vão 
 
 
 def insetir(): # insere o animal ao sistema
+    # NICOLAS E PAULO
     print("inserir")
 
 def remover(): # remove o animal no sistema
+    # NICOLAS
     print("remover")
 
 def alterar(): # altera as informações do animal no sistema
+    # PAULO
     print("alterar")
 
 
