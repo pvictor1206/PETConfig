@@ -1,16 +1,13 @@
 import utilidades #arquivo que importa utilidades e ferramentas gerais que vão ser utilizadas em todos os arquivos
 
 import adotar_pet #arquivo que importa as funcoes para adotar o animal
-import cadastrar_pet #arquivo que importa as funcoes para cadastrar o animal
 import ja_adotado_pet #arquivo que importa as funcoes para mostras as informações dos animais já adotados
-
+import cadastrar_pet
 
 utilidades.linha() #insere uma linha na tela
 print(f"{utilidades.alterar_cor('ciano')}Bem vindo ao PETConfig{utilidades.alterar_cor('limpar')}")
 
 try:
-
-
 
     while True: # Lanço infinito que fica sempre repetindo as informações do menu até o usuario pedir para sair.
 
