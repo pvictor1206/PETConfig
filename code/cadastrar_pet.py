@@ -140,7 +140,7 @@ def insetir(): # insere o animal ao sistema
 
 def remover(): # remove o animal no sistema
     # NICOLAS
-    utilidades.encontrar_dados_pet()
+    print("remover")
 
 
 

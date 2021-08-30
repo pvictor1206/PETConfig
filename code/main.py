@@ -3,6 +3,7 @@ import utilidades #arquivo que importa utilidades e ferramentas gerais que vão 
 import adotar_pet #arquivo que importa as funcoes para adotar o animal
 import ja_adotado_pet #arquivo que importa as funcoes para mostras as informações dos animais já adotados
 import cadastrar_pet
+import  consultar
 
 utilidades.linha() #insere uma linha na tela
 print(f"{utilidades.alterar_cor('ciano')}Bem vindo ao PETConfig{utilidades.alterar_cor('limpar')}")
@@ -17,8 +18,9 @@ try:
 
         print(f"{utilidades.alterar_cor('amarelo')}1. Cadastrar/Remover animal{utilidades.alterar_cor('limpar')}")
         print(f"{utilidades.alterar_cor('amarelo')}2. Adotar animal{utilidades.alterar_cor('limpar')}")
-        print(f"{utilidades.alterar_cor('amarelo')}3. Animais já adotados{utilidades.alterar_cor('limpar')}")
-        print(f"{utilidades.alterar_cor('amarelo')}4. Sair do sistema{utilidades.alterar_cor('limpar')}")
+        print(f"{utilidades.alterar_cor('amarelo')}3. Consultar Animais{utilidades.alterar_cor('limpar')}")
+        print(f"{utilidades.alterar_cor('amarelo')}4. Animais já adotados{utilidades.alterar_cor('limpar')}")
+        print(f"{utilidades.alterar_cor('amarelo')}5. Sair do sistema{utilidades.alterar_cor('limpar')}")
 
         utilidades.linha()  # insere uma linha na tela
 
@@ -34,9 +36,14 @@ try:
 
         elif opcao == 3:
             utilidades.linha()  # insere uma linha na tela
-            ja_adotado_pet.ja_adotado()
+            consultar.consultar_animais()
+
 
         elif opcao == 4:
+            utilidades.linha()  # insere uma linha na tela
+            ja_adotado_pet.ja_adotado()
+
+        elif opcao == 5:
             utilidades.linha()  # insere uma linha na tela
             print(f"{utilidades.alterar_cor('vermelho')}Saindo do Sistema...{utilidades.alterar_cor('limpar')}")
             break
