@@ -140,63 +140,7 @@ def insetir(): # insere o animal ao sistema
 
 def remover(): # remove o animal no sistema
     # NICOLAS
-    codigo_existente = False
-    cont_dados_pet = 0 #contador que mostra a quantidade de animais dentro do arquivo
-    verificacao_tamanho = 0
-    lista_pet = [] # lista que onde fica armazenado os animais
-    codigo_arquivo = '' # string onde fica o código
-
-
-    try: # verifica se existe dados dentro do arquivo
-        dados_pet = open("dados_pet.txt", 'r')
-
-
-        for dados in dados_pet: # adiciona todos os animais dentro de uma lista
-            lista_pet.append(dados)
-
-        dados_pet.close()
-
-        codigo_pet = int(input("Código do animal para remoção: ")) # entrada em que o usuário digite o código para alteração
-
-        for linha in lista_pet: # for em que verifica se existe um codigo para remoção
-            for letra in linha:
-                if letra == ',':
-                    cont_dados_pet += 1
-                if cont_dados_pet == 9 and letra != ',':
-                    try:
-                        if verificacao_tamanho == (len(lista_pet) - 1):
-                            if letra == '':
-                                continue
-                            else:
-                                codigo_arquivo += letra
-                                if str(codigo_pet) == codigo_arquivo:
-                                    print(f'Tem certeza que quer remover o animal {codigo_pet}?')
-                                    codigo_existente = True
-
-                        elif (type(int(letra) == int)):
-                            codigo_arquivo += letra
-
-
-                    except:
-
-                        if str(codigo_pet) == codigo_arquivo:
-                            print(f'Tem certeza que quer remover o animal {codigo_pet}?')
-                            codigo_existente = True
-
-
-                        codigo_arquivo = ''
-                        verificacao_tamanho += 1
-                        cont_dados_pet = 0
-                        break
-
-        if codigo_existente ==  False:
-            print("Código não encontrado.")
-
-
-        #dados_pet = open("dados_pet.txt", 'w')
-
-    except:
-        print("Nenhum animal cadastrado.")
+    utilidades.encontrar_dados_pet()
 
 
 
