@@ -1,5 +1,5 @@
-teste1,1,M,pequeno,1,1,1,,,1
-teste2,2,F,grande,2,2,2,,,2
+teste1,1,M,medio,1,1,1,,,1
+teste2,2,F,grande,2,2,2,Paulo,22/10/2021,2
 teste3,3,M,medio,3,3,3,carlos,01/01/2010,3
 teste4,4,M,medio,3,3,3,antonio,05/01/2012,4
 teste5,5,M,medio,3,3,3,antonio,05/05/2007,5

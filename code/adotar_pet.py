@@ -53,7 +53,7 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
     verificacao_tamanho = 0  # verifica o tamanho da linha do arquivo
     lista_pet = []  # lista que onde fica armazenado os animais
     lista_dados_pet = []  # lista onde será armazenado os informações do arquivo
-    lista_ordenar_idade = []  # lista onde estará a idade para ordernar
+    pet_disponivel = False
 
     index = 0
     lista_porte = []
@@ -209,38 +209,78 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
             if pergunta03 == 'pequeno':
                 for dados in lista_dados_pet:
                     if dados['Porte'] == 'pequeno':
-                        print(f"Nome ------------------- {dados['Nome']}")
-                        print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
-                        print(f"Sexo ------------------- {dados['Sexo']}")
-                        print(f"Porte ------------------- {dados['Porte']}")
-                        print(f"Raça ------------------- {dados['Raça']}")
-                        print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
-                        print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
-                        print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                        if dados['Responsável'] == '':
+                            print(f"Nome ------------------- {dados['Nome']}")
+                            print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
+                            print(f"Sexo ------------------- {dados['Sexo']}")
+                            print(f"Porte ------------------- {dados['Porte']}")
+                            print(f"Raça ------------------- {dados['Raça']}")
+                            print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
+                            print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
+                            print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                            pet_disponivel = True
 
-                        if dados['Responsável'] != '':
-                            print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+                            if dados['Responsável'] == '':
+                                print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
 
 
             elif pergunta03 == 'medio':
                 for dados in lista_dados_pet:
                     if dados['Porte'] == 'pequeno' or dados['Porte'] == 'medio':
-                        print(f"Nome ------------------- {dados['Nome']}")
-                        print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
-                        print(f"Sexo ------------------- {dados['Sexo']}")
-                        print(f"Porte ------------------- {dados['Porte']}")
-                        print(f"Raça ------------------- {dados['Raça']}")
-                        print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
-                        print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
-                        print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                        if dados['Responsável'] == '':
+                            print(f"Nome ------------------- {dados['Nome']}")
+                            print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
+                            print(f"Sexo ------------------- {dados['Sexo']}")
+                            print(f"Porte ------------------- {dados['Porte']}")
+                            print(f"Raça ------------------- {dados['Raça']}")
+                            print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
+                            print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
+                            print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                            pet_disponivel = True
 
-                        if dados['Responsável'] != '':
-                            print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+
+                            if dados['Responsável'] == '':
+                                print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
 
 
             elif pergunta03 == 'grande':
                 for dados in lista_dados_pet:
                     if dados['Porte'] == 'pequeno' or dados['Porte'] == 'medio' or dados['Porte'] == 'grande':
+                        if dados['Responsável'] == '':
+                            print(f"Nome ------------------- {dados['Nome']}")
+                            print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
+                            print(f"Sexo ------------------- {dados['Sexo']}")
+                            print(f"Porte ------------------- {dados['Porte']}")
+                            print(f"Raça ------------------- {dados['Raça']}")
+                            print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
+                            print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
+                            print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                            pet_disponivel = True
+
+
+                            if dados['Responsável'] == '':
+                                print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+
+
+            if pet_disponivel == True:
+                escolha_pet = int(input(f"{utilidades.alterar_cor('ciano')}Digite o código do animal para adotar: {utilidades.alterar_cor('limpar')}"))
+
+                pet_disponivel = False
+
+                for dados in lista_dados_pet:
+                    if dados['Código'] == escolha_pet:
+                        utilidades.linha()
+
+                        responsavel_arquivo = str(input("Nome do responsável: ")).strip()
+                        data_adocao_arquivo = str(input("Data da adoção: (dd/mm/aaaa) ")).strip()
+
+                        dados['Responsável'] = responsavel_arquivo
+                        dados['Data da Adocao'] = data_adocao_arquivo
+
+                        utilidades.linha()
+
+                        print(f"{utilidades.alterar_cor('verde')}ANIMAL ADOTADO (RECIBO){utilidades.alterar_cor('limpar')}")
+
                         print(f"Nome ------------------- {dados['Nome']}")
                         print(f"Idade (Meses) ------------------- {dados['Idade (Meses)']}")
                         print(f"Sexo ------------------- {dados['Sexo']}")
@@ -248,12 +288,67 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
                         print(f"Raça ------------------- {dados['Raça']}")
                         print(f"Lar Temporário ------------------- {dados['Lar Temporário']}")
                         print(f"Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
+                        print(f"Responsável ------------------- {dados['Responsável']}")
+                        print(f"Data da Adocao' ------------------- {dados['Data da Adocao']}")
                         print(f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+                        pet_disponivel = True
 
-                        if dados['Responsável'] != '':
-                            print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+                        dados_pet = open("dados_pet.txt", 'r')
+
+                        arquivo = ''
+                        contador = 1
+
+                        for linha in dados_pet:
+                            if contador == escolha_pet:
+                                pass
+                                arquivo += dados['Nome']
+                                arquivo += ','
+                                arquivo += str(dados['Idade (Meses)'])
+                                arquivo += ','
+                                arquivo += dados['Sexo']
+                                arquivo += ','
+                                arquivo += dados['Porte']
+                                arquivo += ','
+                                arquivo += dados['Raça']
+                                arquivo += ','
+                                arquivo += dados['Lar Temporário']
+                                arquivo += ','
+                                arquivo += dados['Onde o Animal Está']
+                                arquivo += ','
+                                arquivo += dados['Responsável']
+                                arquivo += ','
+                                arquivo += dados['Data da Adocao']
+                                arquivo += ','
+                                arquivo += str(dados['Código'])
+                                arquivo += '\n'
+
+                            else:
+                                arquivo += linha
+
+                            contador += 1
 
 
+                        dados_pet.close()
+
+                        dados_pet = open("dados_pet.txt", 'w')
+
+                        dados_pet.write(arquivo)
+
+                        dados_pet.close()
+
+
+
+
+                        print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+
+                if pet_disponivel == False:
+                    print("Não existe nenhum animal com esse código")
+
+
+
+
+            else:
+                print("Nenhum animal disponível")
 
 
 
