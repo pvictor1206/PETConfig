@@ -32,7 +32,7 @@ try:
 
         elif opcao == 2:
             utilidades.linha()  # insere uma linha na tela
-            adotar_pet.adotar()
+            adotar_pet.condicao_adocao()
 
         elif opcao == 3:
             utilidades.linha()  # insere uma linha na tela

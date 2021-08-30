@@ -13,6 +13,7 @@ def insetir(): # insere o animal ao sistema
         dados_pet = open("dados_pet.txt", 'r') #abre o arquivo para leitura
         for quantidade in dados_pet: # insere o código do animal. (Ex: Animal 01: 1, Animal 02: 2, Animal 03: 3...)
             codigo_pet += 1
+
         codigo_pet = str(codigo_pet) # transforma o codigo em string para colocar no arquivo
         dados_pet.close()
 
@@ -75,7 +76,7 @@ def insetir(): # insere o animal ao sistema
         dados_pet.close()
 
 
-    except:
+    except: # se abrir o arquivo e nao existir, vai da erro, então, irá vir para cá...
         codigo_pet = str(codigo_pet)
 
         dados_pet = open("dados_pet.txt", 'a') # abre o arquivo para adicionar conteúdo
@@ -120,7 +121,7 @@ def insetir(): # insere o animal ao sistema
         lar_temporario = str(input("Lar temporário: ")).strip()
 
         # Digitar o lar anterior
-        lar_anterior = str(input("Local onde o animal está: ")).strip()
+        lar_anterior = str(input("Onde o animal está: ")).strip()
 
         dados_pet.write(
             nome_animal + ',' +
@@ -139,7 +140,7 @@ def insetir(): # insere o animal ao sistema
 
 
 def remover(): # remove o animal no sistema
-    # NICOLAS
+    # NICOLAS (deixa tudo '')
     print("remover")
 
 

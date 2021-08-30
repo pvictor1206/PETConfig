@@ -14,7 +14,7 @@ def ja_adotado(): # funcao que informa todos os animais já adotados
     index = 0
     index_adocao = 0
     cont_data = 0
-    verificacao_tamanho_data = 0
+
 
     # variáveis onde será armazenada as informações dos arquivos
     nome_arquivo = ''

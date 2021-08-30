@@ -94,8 +94,8 @@ def consultar_animais():
                                 lista_dados_pet[index]['Sexo'] = sexo_arquivo
                                 lista_dados_pet[index]['Porte'] = porte_arquivo
                                 lista_dados_pet[index]['Raça'] = raca_arquivo
-                                lista_dados_pet[index]['Lar temporário'] = lar_temp_arquivo
-                                lista_dados_pet[index]['Lar Anterior'] = lar_ante_arquivo
+                                lista_dados_pet[index]['Lar Temporário'] = lar_temp_arquivo
+                                lista_dados_pet[index]['Onde o Animal Está'] = lar_ante_arquivo
                                 lista_dados_pet[index]['Responsável'] = responsavel_arquivo
                                 lista_dados_pet[index]['Data da Adocao'] = data_adocao_arquivo
                                 lista_dados_pet[index]['Código'] = int(codigo_arquivo)
@@ -117,8 +117,8 @@ def consultar_animais():
                         lista_dados_pet[index]['Sexo'] = sexo_arquivo
                         lista_dados_pet[index]['Porte'] = porte_arquivo
                         lista_dados_pet[index]['Raça'] = raca_arquivo
-                        lista_dados_pet[index]['Lar temporário'] = lar_temp_arquivo
-                        lista_dados_pet[index]['Lar Anterior'] = lar_ante_arquivo
+                        lista_dados_pet[index]['Lar Temporário'] = lar_temp_arquivo
+                        lista_dados_pet[index]['Onde o Animal Está'] = lar_ante_arquivo
                         lista_dados_pet[index]['Responsável'] = responsavel_arquivo
                         lista_dados_pet[index]['Data da Adocao'] = data_adocao_arquivo
                         lista_dados_pet[index]['Código'] = int(codigo_arquivo)
