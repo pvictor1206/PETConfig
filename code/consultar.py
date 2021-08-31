@@ -2,7 +2,7 @@ import utilidades
 
 
 def consultar_animais():
-    print(f"{utilidades.alterar_cor('roxo')}Consulta de Animais ainda não cadastrados (ordem decrescente de idade){utilidades.alterar_cor('limpar')}")
+    print(f"{utilidades.alterar_cor('roxo')}Consulta de Animais ainda não adotados (ordem decrescente de idade){utilidades.alterar_cor('limpar')}")
     utilidades.linha()
 
     cont_dados_pet = 0  # contador que mostra a quantidade de animais dentro do arquivo
@@ -29,7 +29,8 @@ def consultar_animais():
 
         for dados in dados_pet:  # adiciona todos os animais dentro de uma lista
             lista_pet.append(dados)
-            lista_dados_pet.append({})
+            if ',' in dados: # Ve se existe conteúdo na linha
+                lista_dados_pet.append({})
 
         dados_pet.close()
 
@@ -144,8 +145,6 @@ def consultar_animais():
 
         lista_ordenar_idade = sorted(lista_ordenar_idade,reverse=True)
         lista_verificar = []
-
-
 
         if len(lista_ordenar_idade) == 0:
             print("Nenhum animal disponível")

@@ -1,6 +1,7 @@
-robertinho,24,F,medio,srd,meu coracao,lagoinha,,,1
+
 robertinho,26,F,grande,srd,meu coracao,lagoinha,,,2
-robertinho,2,F,medio,srd,meu coracao,lagoinha,Wesley,12/04/2021,3
+
 robertinho,14,F,grande,srd,meu coracao,lagoinha,,,4
 robertinho,88,F,medio,srd,meu coracao,lagoinha,Paulin,14/06/2008,5
 robertinho,24,F,pequeno,srd,meu coracao,lagoinha,Larona,13/04/2021,6
+pedrin,25,M,medio,srd,teste,teste,Paulaoo,21/02/2012,7

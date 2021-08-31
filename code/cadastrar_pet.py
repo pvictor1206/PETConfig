@@ -141,7 +141,204 @@ def insetir(): # insere o animal ao sistema
 
 def remover(): # remove o animal no sistema
     # NICOLAS (deixa tudo '')
-    print("remover")
+    print(f"{utilidades.alterar_cor('roxo')}Remoção de Animal{utilidades.alterar_cor('limpar')}")
+    utilidades.linha()
+
+    cont_dados_pet = 0  # contador que mostra a quantidade de animais dentro do arquivo
+    verificacao_tamanho = 0  # verifica o tamanho da linha do arquivo
+    lista_pet = []  # lista que onde fica armazenado os animais
+    lista_dados_pet = []  # lista onde será armazenado os informações do arquivo
+    index = 0
+
+
+    # variáveis onde será armazenada as informações dos arquivos
+    nome_arquivo = ''
+    idade_arquivo = ''
+    sexo_arquivo = ''
+    porte_arquivo = ''
+    raca_arquivo = ''
+    lar_temp_arquivo = ''
+    lar_ante_arquivo = ''
+    responsavel_arquivo = ''
+    data_adocao_arquivo = ''
+    codigo_arquivo = ''  # string onde fica o código
+
+    try:  # verifica se existe dados dentro do arquivo
+        dados_pet = open("dados_pet.txt", 'r')
+
+        for dados in dados_pet:  # adiciona todos os animais dentro de uma lista
+            lista_pet.append(dados)
+            if ',' in dados:  # Ve se existe conteúdo na linha
+                lista_dados_pet.append({})
+
+        dados_pet.close()
+
+        for linha in lista_pet:
+            '''
+            laço em que analisa todos os dados dentro do arquivo e armazena dentro de uma lista com um dicionário.
+
+            Ex:
+            lista_dados_pet[
+
+            {
+            'nome': ---
+            'idade': ---
+            ...
+            'codigo': ---
+
+            },
+            ...
+            {
+            'nome': ---
+            'idade': ---
+            ...
+            'codigo': ---
+
+            }
+
+
+            ]
+
+
+            '''
+            for letra in linha:
+                if letra == ',':
+                    cont_dados_pet += 1
+                if cont_dados_pet == 0 and letra != ',':
+                    nome_arquivo += letra
+                if cont_dados_pet == 1 and letra != ',':
+                    idade_arquivo += letra
+                if cont_dados_pet == 2 and letra != ',':
+                    sexo_arquivo += letra
+                if cont_dados_pet == 3 and letra != ',':
+                    porte_arquivo += letra
+                if cont_dados_pet == 4 and letra != ',':
+                    raca_arquivo += letra
+                if cont_dados_pet == 5 and letra != ',':
+                    lar_temp_arquivo += letra
+                if cont_dados_pet == 6 and letra != ',':
+                    lar_ante_arquivo += letra
+                if cont_dados_pet == 7 and letra != ',':
+                    responsavel_arquivo += letra
+                if cont_dados_pet == 8 and letra != ',':
+                    data_adocao_arquivo += letra
+                if cont_dados_pet == 9 and letra != ',':
+                    try:
+                        if verificacao_tamanho == (len(lista_pet) - 1):
+                            if letra == '':
+                                continue
+                            else:
+                                codigo_arquivo += letra
+                                lista_dados_pet[index]['Nome'] = nome_arquivo
+                                lista_dados_pet[index]['Idade (Meses)'] = int(idade_arquivo)
+                                lista_dados_pet[index]['Sexo'] = sexo_arquivo
+                                lista_dados_pet[index]['Porte'] = porte_arquivo
+                                lista_dados_pet[index]['Raça'] = raca_arquivo
+                                lista_dados_pet[index]['Lar Temporário'] = lar_temp_arquivo
+                                lista_dados_pet[index]['Onde o Animal Está'] = lar_ante_arquivo
+                                lista_dados_pet[index]['Responsável'] = responsavel_arquivo
+                                lista_dados_pet[index]['Data da Adocao'] = data_adocao_arquivo
+                                lista_dados_pet[index]['Código'] = int(codigo_arquivo)
+
+                                break
+
+                        elif (type(int(letra) == int)):
+                            codigo_arquivo += letra
+
+
+                    except:
+
+                        lista_dados_pet[index]['Nome'] = nome_arquivo
+                        lista_dados_pet[index]['Idade (Meses)'] = int(idade_arquivo)
+                        lista_dados_pet[index]['Sexo'] = sexo_arquivo
+                        lista_dados_pet[index]['Porte'] = porte_arquivo
+                        lista_dados_pet[index]['Raça'] = raca_arquivo
+                        lista_dados_pet[index]['Lar Temporário'] = lar_temp_arquivo
+                        lista_dados_pet[index]['Onde o Animal Está'] = lar_ante_arquivo
+                        lista_dados_pet[index]['Responsável'] = responsavel_arquivo
+                        lista_dados_pet[index]['Data da Adocao'] = data_adocao_arquivo
+                        lista_dados_pet[index]['Código'] = int(codigo_arquivo)
+
+                        nome_arquivo = ''
+                        idade_arquivo = ''
+                        sexo_arquivo = ''
+                        porte_arquivo = ''
+                        raca_arquivo = ''
+                        lar_temp_arquivo = ''
+                        lar_ante_arquivo = ''
+                        responsavel_arquivo = ''
+                        codigo_arquivo = ''
+                        data_adocao_arquivo = ''
+                        verificacao_tamanho += 1
+                        index += 1
+                        cont_dados_pet = 0
+                        break
+
+        if len(lista_dados_pet) == 0:
+            print("Nenhum animal cadastrado")
+        else:
+            for dados in lista_dados_pet:
+                for k, v in dados.items():
+                    print(f"{k} ------------------- {v}")
+                print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+
+        escolha_pet = int(input(f"{utilidades.alterar_cor('ciano')}Digite o código do animal para excluir: {utilidades.alterar_cor('limpar')}"))
+
+        for dados in lista_dados_pet:
+            if dados['Código'] == escolha_pet:
+
+                utilidades.linha()
+
+                print(f"{utilidades.alterar_cor('verde')}REMOVER ANIMAL{utilidades.alterar_cor('limpar')}")
+
+                print(f"1. Nome ------------------- {dados['Nome']}")
+                print(f"2. Idade (Meses) ------------------- {dados['Idade (Meses)']}")
+                print(f"3. Sexo ------------------- {dados['Sexo']}")
+                print(f"4. Porte ------------------- {dados['Porte']}")
+                print(f"5. Raça ------------------- {dados['Raça']}")
+                print(f"6. Lar Temporário ------------------- {dados['Lar Temporário']}")
+                print(f"7. Onde o Animal Está ------------------- {dados['Onde o Animal Está']}")
+                print(f"8. Responsável ------------------- {dados['Responsável']}")
+                print(f"9. Data da Adocao' ------------------- {dados['Data da Adocao']}")
+                print(
+                    f"{utilidades.alterar_cor('vermelho')}Código ------------------- {dados['Código']}{utilidades.alterar_cor('limpar')}")
+
+                arquivo = ''
+                contador = 1
+                utilidades.linha()
+
+                while True:
+                    escolha_alteracao = str(input(f"{utilidades.alterar_cor('ciano')}Tem certeza que quer excluir?(sim/nao) {utilidades.alterar_cor('limpar')}")).strip().lower()
+                    try:
+                        if escolha_alteracao == 'sim' or escolha_alteracao == 'nao':
+                            break
+                        else:
+                            print("Resposta inválida, Digite novamente")
+                    except:
+                        print("Resposta inválida, Digite novamente")
+
+                if escolha_alteracao == 'sim':
+
+                    dados_pet = open("dados_pet.txt", 'r')
+
+                    for linha in dados_pet:
+                        if contador == escolha_pet:
+                            arquivo += '\n'
+
+                        else:
+                            arquivo += linha
+
+                        contador += 1
+
+                    dados_pet.close()
+                    dados_pet = open("dados_pet.txt", 'w')
+                    dados_pet.write(arquivo)
+                    print(
+                        f"{utilidades.alterar_cor('roxo')}REMOÇÃO REALIZADA COM SUCESSO{utilidades.alterar_cor('limpar')}")
+                    dados_pet.close()
+
+    except:
+        print("Entrada invalida.")
 
 
 
@@ -175,7 +372,8 @@ def alterar(): # altera as informações do animal no sistema
 
         for dados in dados_pet:  # adiciona todos os animais dentro de uma lista
             lista_pet.append(dados)
-            lista_dados_pet.append({})
+            if ',' in dados:  # Ve se existe conteúdo na linha
+                lista_dados_pet.append({})
 
         dados_pet.close()
 

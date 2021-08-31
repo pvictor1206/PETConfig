@@ -36,7 +36,8 @@ def ja_adotado(): # funcao que informa todos os animais já adotados
 
         for dados in dados_pet:  # adiciona todos os animais dentro de uma lista
             lista_pet.append(dados)
-            lista_dados_pet.append({})
+            if ',' in dados:  # Ve se existe conteúdo na linha
+                lista_dados_pet.append({})
 
 
         dados_pet.close()

@@ -6,6 +6,9 @@ def condicao_adocao(): # funcao para verificar as condições para a adoção do
     print(f"{utilidades.alterar_cor('roxo')}ADOÇÃO DO PET{utilidades.alterar_cor('limpar')}")
     utilidades.linha()
 
+    responsavel_arquivo = str(input("Nome do responsável: ")).strip()
+    data_adocao_arquivo = str(input("Data da adoção: (dd/mm/aaaa) ")).strip()
+
     while True:
         pergunta01 = str(input(f"Você possui condições financeiras para adotar um novo animal? (Sim/Nao) ")).strip().lower()
         try:
@@ -17,7 +20,7 @@ def condicao_adocao(): # funcao para verificar as condições para a adoção do
             print("Resposta inválida, Digite novamente")
 
     while True:
-        pergunta02 = str(input(f"Avaliando sua rotina, você possui tempo livre para se dedicar ao seu novo pet? (Sim/Não)  ")).strip().lower()
+        pergunta02 = str(input(f"Avaliando sua rotina, você possui tempo livre para se dedicar ao seu novo pet? (Sim/Nao)  ")).strip().lower()
         try:
             if pergunta02 == 'sim' or pergunta02 == 'nao':
                 break
@@ -39,12 +42,12 @@ def condicao_adocao(): # funcao para verificar as condições para a adoção do
     utilidades.linha()
 
     if pergunta01 == 'sim' and pergunta02 == 'sim':
-        adocao_defirida(pergunta03)
+        adocao_defirida(pergunta03,responsavel_arquivo,data_adocao_arquivo)
     else:
         print("ADOÇÃO INDEFIRIDA")
         #coprovante
 
-def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirido nas condições
+def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para adotar o animal caso seja defirido nas condições
     #PAULO
     print(f"{utilidades.alterar_cor('roxo')}ADOÇÃO DEFIRIDA: ANIMAIS DISPONIVEIS DE ACORDO COM AS PERGUNTAS{utilidades.alterar_cor('limpar')}")
     utilidades.linha()
@@ -72,12 +75,16 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
     data_adocao_arquivo = ''
     codigo_arquivo = ''  # string onde fica o código
 
+    responsavel = responsavel_arq
+    data_adocao = data_adocao_arq
+
     try:  # verifica se existe dados dentro do arquivo
         dados_pet = open("dados_pet.txt", 'r')
 
         for dados in dados_pet:  # adiciona todos os animais dentro de uma lista
             lista_pet.append(dados)
-            lista_dados_pet.append({})
+            if ',' in dados:  # Ve se existe conteúdo na linha
+                lista_dados_pet.append({})
 
         dados_pet.close()
 
@@ -271,11 +278,9 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
                     if dados['Código'] == escolha_pet:
                         utilidades.linha()
 
-                        responsavel_arquivo = str(input("Nome do responsável: ")).strip()
-                        data_adocao_arquivo = str(input("Data da adoção: (dd/mm/aaaa) ")).strip()
 
-                        dados['Responsável'] = responsavel_arquivo
-                        dados['Data da Adocao'] = data_adocao_arquivo
+                        dados['Responsável'] = responsavel
+                        dados['Data da Adocao'] = data_adocao_arq
 
                         utilidades.linha()
 

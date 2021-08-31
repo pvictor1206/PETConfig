@@ -16,7 +16,7 @@ try:
 
         print(f"{utilidades.alterar_cor('roxo')}MENU PRINCIPAL{utilidades.alterar_cor('limpar')}")
 
-        print(f"{utilidades.alterar_cor('amarelo')}1. Cadastrar/Remover animal{utilidades.alterar_cor('limpar')}")
+        print(f"{utilidades.alterar_cor('amarelo')}1. Cadastrar/Remover/Editar animal{utilidades.alterar_cor('limpar')}")
         print(f"{utilidades.alterar_cor('amarelo')}2. Adotar animal{utilidades.alterar_cor('limpar')}")
         print(f"{utilidades.alterar_cor('amarelo')}3. Consultar Animais{utilidades.alterar_cor('limpar')}")
         print(f"{utilidades.alterar_cor('amarelo')}4. Animais já adotados{utilidades.alterar_cor('limpar')}")
