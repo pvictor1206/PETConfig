@@ -9,7 +9,7 @@ def ja_adotado(): # funcao que informa todos os animais já adotados
     verificacao_tamanho = 0  # verifica o tamanho da linha do arquivo
     lista_pet = []  # lista que onde fica armazenado os animais
     lista_dados_pet = []  # lista onde será armazenado os informações do arquivo
-    lista_datas = []
+    lista_datas = [] # lista em que fica armazenado as datas para ser alocados da mais recente a mais antiga
     lista_cod_verifi = []
     index = 0
     index_adocao = 0
@@ -207,10 +207,10 @@ def ja_adotado(): # funcao que informa todos os animais já adotados
 
 
 
-        if len(lista_cod_verifi) == 0:
+        if len(lista_cod_verifi) == 0: # condição se não houver nenhum animal cadastrado.
             print("Nenhum animal adotado")
         else:
-            for dados in sorted(lista_datas, reverse=True):
+            for dados in sorted(lista_datas, reverse=True): #lanço em que imprime na tela as datas de forma da mais recente para mais antiga
                for info in lista_dados_pet:
                    if info['Código'] == dados[3]:
                        print(f"Nome ------------------- {info['Nome']}")

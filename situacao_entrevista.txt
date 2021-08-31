@@ -1,0 +1,5 @@
+,sim,sim,medio,defirido,animal adotado
+rodrigin,sim,nao,grande,nao apto - indefirido,nao atendeu os criterio de avaliacao
+wesley,sim,sim,grande,defirido,animal adotado
+carlin,sim,sim,pequeno,defirido,nao ha animais disponiveis
+pimenta,sim,nao,grande,nao apto - indefirido,nao atendeu os criterio de avaliacao

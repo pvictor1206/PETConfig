@@ -4,11 +4,13 @@ import utilidades #arquivo que importa utilidades e ferramentas gerais que vão 
 def condicao_adocao(): # funcao para verificar as condições para a adoção do animal
     #NICOLAS
     print(f"{utilidades.alterar_cor('roxo')}ADOÇÃO DO PET{utilidades.alterar_cor('limpar')}")
-    utilidades.linha()
+    utilidades.linha() # usa a funcao linha do arquivo utilidades
 
+    # entrada de dados. Resposavel e data
     responsavel_arquivo = str(input("Nome do responsável: ")).strip()
     data_adocao_arquivo = str(input("Data da adoção: (dd/mm/aaaa) ")).strip()
 
+    # Perguntas para verificar se a pessoa será apta a adotar
     while True:
         pergunta01 = str(input(f"Você possui condições financeiras para adotar um novo animal? (Sim/Nao) ")).strip().lower()
         try:
@@ -41,13 +43,30 @@ def condicao_adocao(): # funcao para verificar as condições para a adoção do
 
     utilidades.linha()
 
+    # se a pessoa for defirida (responder sim para as duas perguntas) então irá para a funcao adocao_defirida
     if pergunta01 == 'sim' and pergunta02 == 'sim':
-        adocao_defirida(pergunta03,responsavel_arquivo,data_adocao_arquivo)
-    else:
+        adocao_defirida(pergunta01,pergunta02,pergunta03,responsavel_arquivo,data_adocao_arquivo)
+    else: # se a pessoa dor indefirida, irá aparecer essa mensagem, incluindo os dados dos arquivos com a justificativa
         print("ADOÇÃO INDEFIRIDA")
-        #coprovante
+        try:
+            situacao_entrevista = open("situacao_entrevista.txt", 'a')  # abre o arquivo para adicionar conteúdo
 
-def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para adotar o animal caso seja defirido nas condições
+            situacao_entrevista.write(
+                responsavel_arquivo + ',' +
+                pergunta01 + ',' +
+                pergunta02 + ',' +
+                pergunta03 + ',' +
+                'nao apto - indefirido' + ',' +
+                'nao atendeu os criterio de avaliacao' + '\n'
+            )
+
+            situacao_entrevista.close()
+
+        except Exception as erro:
+            print(f"Erro: {erro}")
+
+# funcao se a adoção for defirida
+def adocao_defirida(pergunta01,pergunta02,pergunta03,responsavel_arq,data_adocao_arq): # funcao para adotar o animal caso seja defirido nas condições
     #PAULO
     print(f"{utilidades.alterar_cor('roxo')}ADOÇÃO DEFIRIDA: ANIMAIS DISPONIVEIS DE ACORDO COM AS PERGUNTAS{utilidades.alterar_cor('limpar')}")
     utilidades.linha()
@@ -59,7 +78,7 @@ def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para a
     pet_disponivel = False
 
     index = 0
-    lista_porte = []
+    lista_porte = [] # lista onde será armazenada os portes(pequeno,medio,grade) dos animais
 
 
     # variáveis onde será armazenada as informações dos arquivos
@@ -208,10 +227,29 @@ def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para a
                         cont_dados_pet = 0
                         break
 
-
-
+        # se nao exister nenhum animal para adoção. Também será armazanado no arquivo o motivo da não adoção
         if len(lista_porte) == 0:
             print("Nenhum animal disponível")
+
+            try:
+                situacao_entrevista = open("situacao_entrevista.txt", 'a')  # abre o arquivo para adicionar conteúdo
+
+                situacao_entrevista.write(
+                    responsavel + ',' +
+                    pergunta01 + ',' +
+                    pergunta02 + ',' +
+                    pergunta03 + ',' +
+                    'defirido' + ',' +
+                    'nao ha animais disponiveis' + '\n'
+                )
+
+                situacao_entrevista.close()
+
+            except Exception as erro:
+                print(f"Erro: {erro}")
+
+
+        # se exister animais para adotar, outras condições serão feitas para analisar se será possível, como verificar se é pequeno, medio ou grande
         else:
             if pergunta03 == 'pequeno':
                 for dados in lista_dados_pet:
@@ -268,7 +306,7 @@ def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para a
                             if dados['Responsável'] == '':
                                 print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
 
-
+            # se existir animais disponiveis para aquele porte escolhido, então a pessoa poderá adotar
             if pet_disponivel == True:
                 escolha_pet = int(input(f"{utilidades.alterar_cor('ciano')}Digite o código do animal para adotar: {utilidades.alterar_cor('limpar')}"))
 
@@ -340,19 +378,48 @@ def adocao_defirida(pergunta03,responsavel_arq,data_adocao_arq): # funcao para a
 
                         dados_pet.close()
 
+                        try:
+                            situacao_entrevista = open("situacao_entrevista.txt", 'a')  # abre o arquivo para adicionar conteúdo
 
+                            situacao_entrevista.write(
+                                responsavel + ',' +
+                                pergunta01 + ',' +
+                                pergunta02 + ',' +
+                                pergunta03 + ',' +
+                                'defirido' + ',' +
+                                'animal adotado' + '\n'
+                            )
 
+                            situacao_entrevista.close()
+
+                        except Exception as erro:
+                            print(f"Erro: {erro}")
 
                         print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
 
                 if pet_disponivel == False:
                     print("Não existe nenhum animal com esse código")
 
-
-
-
+            # Se não existir nenhum animal disponivel
             else:
                 print("Nenhum animal disponível")
+                try:
+                    situacao_entrevista = open("situacao_entrevista.txt", 'a')  # abre o arquivo para adicionar conteúdo
+
+                    situacao_entrevista.write(
+                        responsavel + ',' +
+                        pergunta01 + ',' +
+                        pergunta02 + ',' +
+                        pergunta03 + ',' +
+                        'defirido' + ',' +
+                        'nao ha animais disponiveis' + '\n'
+                    )
+
+                    situacao_entrevista.close()
+
+                except Exception as erro:
+                    print(f"Erro: {erro}")
+
 
 
 

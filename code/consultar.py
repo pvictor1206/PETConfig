@@ -143,15 +143,15 @@ def consultar_animais():
                         break
 
 
-        lista_ordenar_idade = sorted(lista_ordenar_idade,reverse=True)
+        lista_ordenar_idade = sorted(lista_ordenar_idade,reverse=True) # lista em que irá adornar a idade em modo decrescente...
         lista_verificar = []
 
         if len(lista_ordenar_idade) == 0:
             print("Nenhum animal disponível")
         else:
-            for idade in lista_ordenar_idade:
+            for idade in lista_ordenar_idade: # laço em que imprime na tela somente os animais que não estão adotados
                 for dados in lista_dados_pet:
-                    if idade == int(dados["Idade (Meses)"]) and (dados["Código"] not in lista_verificar): # faz com que nao imprima quantidades repetidas
+                    if idade == int(dados["Idade (Meses)"]) and (dados["Código"] not in lista_verificar): # faz com que nao imprima animais repetidas
                         for k, v in dados.items():
                             print(f"{k} ------------------- {v}")
                             lista_verificar.append(dados["Código"])

@@ -377,6 +377,7 @@ def alterar(): # altera as informações do animal no sistema
 
         dados_pet.close()
 
+        # Laço em que analisa todos os dados dentro do arquivo, separando nos dicionarios respectivamente.
         for linha in lista_pet:
             '''
             laço em que analisa todos os dados dentro do arquivo e armazena dentro de uma lista com um dicionário.
@@ -479,9 +480,10 @@ def alterar(): # altera as informações do animal no sistema
                         cont_dados_pet = 0
                         break
 
+        # se nao existir nenhum animal do arquivo
         if len(lista_dados_pet) == 0:
             print("Nenhum animal cadastrado")
-        else:
+        else: # se existir irá imprimir na tela para alteração
             for dados in lista_dados_pet:
                 for k,v in dados.items():
                     print(f"{k} ------------------- {v}")
@@ -489,7 +491,7 @@ def alterar(): # altera as informações do animal no sistema
 
         escolha_pet = int(input(f"{utilidades.alterar_cor('ciano')}Digite o código do animal para editar: {utilidades.alterar_cor('limpar')}"))
 
-        for dados in lista_dados_pet:
+        for dados in lista_dados_pet: # dependendo da escolha. O usuário poderá escolher o que quer alterar
             if dados['Código'] == escolha_pet:
 
 
@@ -514,6 +516,12 @@ def alterar(): # altera as informações do animal no sistema
                 utilidades.linha()
 
                 escolha_alteracao = int(input(f"{utilidades.alterar_cor('ciano')}Digite o número do item que você quer alterar: {utilidades.alterar_cor('limpar')}"))
+
+                """
+                
+                Escolhido o que quer alterar, condições serão feitas para motificar a parte escolhida.
+                
+                """
 
                 if escolha_alteracao == 1:
 
@@ -900,7 +908,7 @@ def alterar(): # altera as informações do animal no sistema
                 else:
                     print("Entrada invalida")
 
-
+        # Se não existir nenhum animal no arquivo
         if pet_disponivel == False:
             print("Animal não encontrado")
 
