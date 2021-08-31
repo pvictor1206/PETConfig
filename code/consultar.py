@@ -143,7 +143,7 @@ def consultar_animais():
 
 
         lista_ordenar_idade = sorted(lista_ordenar_idade,reverse=True)
-        aux_idade = len(lista_ordenar_idade)
+        lista_verificar = []
 
 
 
@@ -152,15 +152,12 @@ def consultar_animais():
         else:
             for idade in lista_ordenar_idade:
                 for dados in lista_dados_pet:
-                    if idade == int(dados["Idade (Meses)"]) and aux_idade > 0:
+                    if idade == int(dados["Idade (Meses)"]) and (dados["Código"] not in lista_verificar): # faz com que nao imprima quantidades repetidas
                         for k, v in dados.items():
                             print(f"{k} ------------------- {v}")
-                            aux_idade -= 1
-                        if lista_dados_pet[aux_idade]["Responsável"] == '':
+                            lista_verificar.append(dados["Código"])
+                        if dados["Responsável"] == '':
                             print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
-
-
-
 
 
     except:

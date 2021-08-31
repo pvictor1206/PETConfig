@@ -1,7 +1,6 @@
-teste,33,M,grande,srd,teste,tetse,,,1
-raimudinho,22,M,grande,srd,teste,tetse,,,2
-pipoca,24,M,grande,srd,teste,tetse,,,3
-neww,24,M,grande,srd,teste,tetse,,,4
-teste,44,M,grande,srd,teste,tetse,,,5
-teste,44,M,grande,cachorro-pitch,teste,tetse,,,6
-paulinho gameplay,44,M,grande,srd,teste,no meu coracao,,,7
+robertinho,24,F,medio,srd,meu coracao,lagoinha,,,1
+robertinho,26,F,grande,srd,meu coracao,lagoinha,,,2
+robertinho,2,F,medio,srd,meu coracao,lagoinha,Wesley,12/04/2021,3
+robertinho,14,F,grande,srd,meu coracao,lagoinha,,,4
+robertinho,88,F,medio,srd,meu coracao,lagoinha,Paulin,14/06/2008,5
+robertinho,24,F,pequeno,srd,meu coracao,lagoinha,Larona,13/04/2021,6
