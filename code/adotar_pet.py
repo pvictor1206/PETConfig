@@ -300,7 +300,6 @@ def adocao_defirida(pergunta03): # funcao para adotar o animal caso seja defirid
 
                         for linha in dados_pet:
                             if contador == escolha_pet:
-                                pass
                                 arquivo += dados['Nome']
                                 arquivo += ','
                                 arquivo += str(dados['Idade (Meses)'])

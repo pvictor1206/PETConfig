@@ -141,16 +141,25 @@ def consultar_animais():
                         cont_dados_pet = 0
                         break
 
+
+        lista_ordenar_idade = sorted(lista_ordenar_idade,reverse=True)
+        aux_idade = len(lista_ordenar_idade)
+
+
+
         if len(lista_ordenar_idade) == 0:
             print("Nenhum animal disponível")
         else:
-            for idade in sorted(lista_ordenar_idade,reverse=True):  # laço em que verifica a decrescente das idades, e com isso, imprime os valores da lista em ordem decrescente de idade
-                for dados in range(len(lista_ordenar_idade)):
-                    if lista_dados_pet[dados]["Idade (Meses)"] == idade:
-                        for k, v in lista_dados_pet[dados].items():
+            for idade in lista_ordenar_idade:
+                for dados in lista_dados_pet:
+                    if idade == int(dados["Idade (Meses)"]) and aux_idade > 0:
+                        for k, v in dados.items():
                             print(f"{k} ------------------- {v}")
-                        if lista_dados_pet[dados]["Responsável"] == '':
+                            aux_idade -= 1
+                        if lista_dados_pet[aux_idade]["Responsável"] == '':
                             print(f"{utilidades.alterar_cor('amarelo')}=-{utilidades.alterar_cor('limpar')}" * 40)
+
+
 
 
 
